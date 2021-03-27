@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Broadway.BugTracker", "Broadway.BugTracker\Broadway.BugTracker.csproj", "{F7F5740F-1B93-49BA-A4DB-CD55E05A7234}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F7F5740F-1B93-49BA-A4DB-CD55E05A7234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7F5740F-1B93-49BA-A4DB-CD55E05A7234}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7F5740F-1B93-49BA-A4DB-CD55E05A7234}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7F5740F-1B93-49BA-A4DB-CD55E05A7234}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3CE3BB1A-1041-43B5-A5F8-2C8F44640C5A}
+	EndGlobalSection
+EndGlobal
