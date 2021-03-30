@@ -28,7 +28,8 @@ namespace Broadway.BugTracker.Service
         public List<WorkItemViewModel> GetAll()
         {
             var workitems = db.WorkItem.ToList();
-            
+
+            #region type1
             //// type 1:
             //var list = new List<WorkItemViewModel>();
             //foreach (var item in workitems)
@@ -51,6 +52,9 @@ namespace Broadway.BugTracker.Service
             //    list.Add(workitemviewmodel);
             //}
             //// type1: end
+            #endregion
+
+            #region Type2
 
             ////type 2 : linq query
             //var listofworkItemViewModel = (from item in workitems select new WorkItemViewModel {
@@ -60,16 +64,21 @@ namespace Broadway.BugTracker.Service
             //      Title=item.Title
             //}).ToList();
             ////type2 end
+            #endregion
+
+            #region Type 3
 
             //type 3
             var listworkitems = workitems.Select(p => new WorkItemViewModel { 
                 Id=p.Id,
                 AssigneeName=p.Asignee==null? "": p.Asignee.UserName,
                 ReporterName=p.Reporter==null? "" : p.Reporter.UserName,
-                Title=p.Title
+                Title=p.Title,
+                Status=p.Status
             }).ToList();
-            //type 3 end
             return listworkitems;
+            //type 3 end
+            #endregion
 
             //return db.WorkItem.ToList().Select(p => new WorkItemViewModel { 
             //     Id=p.Id,
@@ -81,6 +90,29 @@ namespace Broadway.BugTracker.Service
         public WorkItems GetbyId(int id)
         {
             return db.WorkItem.Find(id);
+        }
+
+        public (bool, string) ChangeStateofWorkItem(int id, WorkItemStatus status)
+        {
+            try
+            {
+                var item = db.WorkItem.Find(id);
+                if (item==null)
+                {
+                    return (false, "Item not found");
+                }
+                else
+                {
+                    item.Status = status;
+                    db.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                    return (true, "item updated");
+                }
+            }
+            catch (Exception ex)
+            {
+                return (false, ex.Message);
+            }
         }
     }
 }
