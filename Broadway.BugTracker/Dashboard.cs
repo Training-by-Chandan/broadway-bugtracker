@@ -35,21 +35,26 @@ namespace Broadway.BugTracker
         {
             //dataGridView1.DataSource = workItemService.GetAll();
             //dataGridView1.Refresh();
+
+            //clearing items in the list 
             listBox1.Items.Clear();
             listBox2.Items.Clear();
             listBox3.Items.Clear();
 
-
+            //fetching all work items
             var data = workItemService.GetAll();
+            
             //separating items
             var todoitem = data.Where(p => p.Status == WorkItemStatus.ToDo).ToArray();
             var inProgressItem = data.Where(p => p.Status == WorkItemStatus.InProgress).ToArray();
             var doneItem = data.Where(p => p.Status == WorkItemStatus.Done).ToArray();
 
+            //filling up items in respective list
             listBox1.Items.AddRange(todoitem);
             listBox2.Items.AddRange(inProgressItem);
             listBox3.Items.AddRange(doneItem);
 
+            //refreshing the list
             listBox1.Refresh();
             listBox2.Refresh();
             listBox3.Refresh();
